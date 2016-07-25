@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1469480409830.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A1408E63",
+    "lastKnownWriteTime" : 27303364806049904,
+    "last_content_update" : 1469480409830,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "4wtbulfdlt",
+        "caption" : "HHNetsHi",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=HHNetsHi&cache_key=4wtbulfdlt",
+        "displayedObservations" : "382",
+        "environment" : "",
+        "object" : "HHNetsHi",
+        "totalObservations" : "382",
+        "variables" : "7"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
