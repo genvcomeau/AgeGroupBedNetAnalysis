@@ -24,3 +24,9 @@ Bed.Net.High[c("HHMNo", "NETNO", "Netspp", "pLNNET")]<- NA
 mlm.Hi<- 
   merge(Bed.Net.High, HHNetsHi, by.x= "HHNo", by.y= "HHNo")
 mlm.Lo$MAL12<- sub("N", 0, mlm.Lo$MAL12)
+
+logit.Hi<-
+  glm(LNNET ~ Age + Pregnant + Sex + NETDF + SHRSLP+ 
+  SLPSTRUCT + MAL12 + HHMNo.y + Netspp.y, 
+      data = mlm.Hi, family = "binomial")
+summary(logit.Hi)
