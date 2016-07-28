@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "Bed.Net<- read.csv(\"C:/Users/Genevieve/Documents/R/MalariaBedNetSubset.csv\")\nBed.Net.High<- subset(Bed.Net, Bed.Net$High >0)\nBed.Net.Low<- subset(Bed.Net, Bed.Net$Low >0)\nlibrary(dplyr)\nHHTotLow<-\n  group_by(Bed.Net.Low, HHNo) %>% slice(which.max(HHMNo))\nHHTotLow<- HHTotLow[,c(\"HHNo\", \"HHMNo\")]\nNetTotLow<-\n  group_by(Bed.Net.Low, HHNo) %>% slice(which.max(NETNO))\n#bad estimate of HHsize, replaced by LNNET+NoNet\nHHNetsHi<-\n  merge(HHTotHi, NetTotHi, by.x = \"HHNo\", by.y = \"HHNo\")\nHHNetsHi$Netspp<- HHNetsHi$NETNO/HHNetsHi$HHMNo\nNetuseHHLow<- \n  merge(LNNETLow, NoNetLow, by.x = \"HHNo\", by.y = \"HHNo\")\nNetuseHHLow$HHtot<- \n  NetuseHHLow$`(sum(LNNET))` + NetuseHHLow$`(sum(NoNet))`\n#New estimate of HHsize, takes greater of two methods\nHHNetsLow$HHMNo<- pmax(HHNetsLow$HHMNo, HHNetsLow$HHtot)\nHHNetsLow$pLNNET<- \n  (HHNetsLow$`(sum(LNNET))`/(HHNetsLow$`(sum(LNNET))`+HHNetsLow$`(sum(NoNet))`))\nBed.Net.High[c(\"HHMNo\", \"NETNO\", \"Netspp\", \"pLNNET\")]<- NA\n#IMPORTANT HHMNo, NETNO in by land data != OG, rep total\nmlm.Hi<- \n  merge(Bed.Net.High, HHNetsHi, by.x= \"HHNo\", by.y= \"HHNo\")\nmlm.Lo$MAL12<- sub(\"N\", 0, mlm.Lo$MAL12)\n\nlogit.Hi<-\n  glm(LNNET ~ Age + Pregnant + Sex + NETDF + SHRSLP+ \n  SLPSTRUCT + MAL12 + HHMNo.y + Netspp.y, \n      data = mlm.Hi, family = \"binomial\")\nsummary(logit.Hi)",
+    "contents" : "Bed.Net<- read.csv(\"C:/Users/Genevieve/Documents/R/MalariaBedNetSubset.csv\")\nBed.Net.High<- subset(Bed.Net, Bed.Net$High >0)\nBed.Net.Low<- subset(Bed.Net, Bed.Net$Low >0)\nlibrary(dplyr)\nHHTotLow<-\n  group_by(Bed.Net.Low, HHNo) %>% slice(which.max(HHMNo))\nHHTotLow<- HHTotLow[,c(\"HHNo\", \"HHMNo\")]\nNetTotLow<-\n  group_by(Bed.Net.Low, HHNo) %>% slice(which.max(NETNO))\n#bad estimate of HHsize, replaced by LNNET+NoNet\nHHNetsHi<-\n  merge(HHTotHi, NetTotHi, by.x = \"HHNo\", by.y = \"HHNo\")\nHHNetsHi$Netspp<- HHNetsHi$NETNO/HHNetsHi$HHMNo\nNetuseHHLow<- \n  merge(LNNETLow, NoNetLow, by.x = \"HHNo\", by.y = \"HHNo\")\nNetuseHHLow$HHtot<- \n  NetuseHHLow$`(sum(LNNET))` + NetuseHHLow$`(sum(NoNet))`\n#New estimate of HHsize, takes greater of two methods\nHHNetsLow$HHMNo<- pmax(HHNetsLow$HHMNo, HHNetsLow$HHtot)\nHHNetsLow$pLNNET<- \n  (HHNetsLow$`(sum(LNNET))`/(HHNetsLow$`(sum(LNNET))`+HHNetsLow$`(sum(NoNet))`))\nBed.Net.High[c(\"HHMNo\", \"NETNO\", \"Netspp\", \"pLNNET\")]<- NA\n#IMPORTANT HHMNo, NETNO in by land data != OG, rep total\nmlm.Hi<- \n  merge(Bed.Net.High, HHNetsHi, by.x= \"HHNo\", by.y= \"HHNo\")\nmlm.Lo$MAL12<- sub(\"N\", 0, mlm.Lo$MAL12)\n\nlogit.Hi<-\n  glm(LNNET ~ Age + Pregnant + Sex + NETDF + SHRSLP+ \n  SLPSTRUCT + MAL12 + HHMNo.y + Netspp.y, \n      data = mlm.Hi, family = \"binomial\")\nsummary(logit.Hi)\nlogit.Lo<-\n  glm(LNNET ~ Age + Pregnant + Sex + NETDF + SHRSLP+ \n        SLPSTRUCT + MAL12 + HHMNo + Netspp, \n      data = mlm.Lo, family = \"binomial\", na.action= na.exclude)\nsummary(logit.Lo)\nlogit.sig.Hi<-\n  glm(LNNET ~ Age + Sex + NETDF + \n        SLPSTRUCT + HHMNo.y + Netspp.y, \n      data = mlm.Hi, family = \"binomial\")\nlogit.sig.Lo<-\n  glm(LNNET ~ Sex + NETDF + Netspp, \n      data = mlm.Lo, family = \"binomial\", na.action= na.exclude)",
     "created" : 1469470859589.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "476151038",
+    "hash" : "2408671217",
     "id" : "A550614C",
-    "lastKnownWriteTime" : 1469662682,
-    "last_content_update" : 1469662682874,
+    "lastKnownWriteTime" : 1469664731,
+    "last_content_update" : 1469664731101,
     "path" : "~/AgeGroupBedNetAnalysis/AgeGroupMasterScript.R",
     "project_path" : "AgeGroupMasterScript.R",
     "properties" : {

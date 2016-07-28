@@ -30,3 +30,15 @@ logit.Hi<-
   SLPSTRUCT + MAL12 + HHMNo.y + Netspp.y, 
       data = mlm.Hi, family = "binomial")
 summary(logit.Hi)
+logit.Lo<-
+  glm(LNNET ~ Age + Pregnant + Sex + NETDF + SHRSLP+ 
+        SLPSTRUCT + MAL12 + HHMNo + Netspp, 
+      data = mlm.Lo, family = "binomial", na.action= na.exclude)
+summary(logit.Lo)
+logit.sig.Hi<-
+  glm(LNNET ~ Age + Sex + NETDF + 
+        SLPSTRUCT + HHMNo.y + Netspp.y, 
+      data = mlm.Hi, family = "binomial")
+logit.sig.Lo<-
+  glm(LNNET ~ Sex + NETDF + Netspp, 
+      data = mlm.Lo, family = "binomial", na.action= na.exclude)
