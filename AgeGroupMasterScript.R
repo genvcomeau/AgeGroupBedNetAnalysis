@@ -51,11 +51,44 @@ with(logit.sig.Hi, pchisq(null.deviance - deviance,
 confint.default(logit.sig.Hi)
 exp(cbind(OR = coef(logit.sig.Hi), confint(logit.sig.Hi)))
 #Predicted probabilities by age
-predicted.Hi.F<- with(mlm.Hi,
-     data.frame(Age = factor(1:98), Sex = factor("F"), NETDF = mean(NETDF), SLPSTRUCT = mean(SLPSTRUCT), HHMNo.y = mean(HHMNo.y), Netspp.y = mean(Netspp.y)))
-predicted.Hi<- rbind(predicted.Hi.F, predicted.Hi.M)
-predicted.Lo.M<- with(mlm.Lo,
-                      data.frame(Age = factor(1:98), Sex = "M", Netspp = mean(Netspp, na.rm = TRUE)))
-predicted.Lo.F<- with(mlm.Lo,
-                      +      data.frame(Age = factor(1:98), Sex = "F", Netspp = mean(Netspp, na.rm = TRUE)))
-predicted.Lo <- rbind(predicted.Lo.F, predicted.Lo.M)
+predicted.Hi.F.ND1.M1<- with(mlm.Hi,
+     data.frame(Age = as.numeric(factor(1:98)), Sex = factor("F"), NETDF = factor(1), SLPSTRUCT = factor(1), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.M.ND1.M1<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("M"), NETDF = factor(1), SLPSTRUCT = factor(1), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.ND1.M1<- rbind(predicted.Hi.F.ND1.M1, predicted.Hi.M.ND1.M1)
+predicted.Hi.F.ND1.M0<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("F"), NETDF = factor(1), SLPSTRUCT = factor(0), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.M.ND1.M0<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("M"), NETDF = factor(1), SLPSTRUCT = factor(0), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.ND1.M0<- rbind(predicted.Hi.F.ND1.M0, predicted.Hi.M.ND1.M0)
+predicted.Hi.F.ND0.M1<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("F"), NETDF = factor(0), SLPSTRUCT = factor(1), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.M.ND0.M1<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("M"), NETDF = factor(0), SLPSTRUCT = factor(1), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.ND0.M1<- rbind(predicted.Hi.F.ND0.M1, predicted.Hi.M.ND0.M1)
+predicted.Hi.F.ND0.M0<- with(mlm.Hi,
+                                data.frame(Age = as.numeric(factor(1:98)), Sex = factor("F"), NETDF = factor(0), SLPSTRUCT = factor(0), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.M.ND0.M0<- with(mlm.Hi,
+                             data.frame(Age = as.numeric(factor(1:98)), Sex = factor("M"), NETDF = factor(0), SLPSTRUCT = factor(0), HHMNo.y = 6.366133, Netspp.y = 0.4632654))
+predicted.Hi.ND0.M0<- rbind(predicted.Hi.F.ND0.M0, predicted.Hi.M.ND0.M0)
+logit.sig.Lo.pp<-
+  glm(LNNET ~ Age + Sex + NETDF + Netspp, 
+      data = mlm.Lo, family = "binomial", na.action= na.exclude)
+predicted.Lo.M.ND1<- with(mlm.Lo,
+                      data.frame(Age = as.numeric(factor(1:98)), Sex = "M", NETDF = factor(1), Netspp =0.5425858))
+predicted.Lo.F.ND1<- with(mlm.Lo,
+                        data.frame(Age = as.numeric(factor(1:98)), Sex = "F", NETDF = factor(1), Netspp = 0.5425858))
+predicted.Lo.ND1 <- rbind(predicted.Lo.F.ND1, predicted.Lo.M.ND1)
+predicted.Lo.M.ND0<- with(mlm.Lo,
+                     data.frame(Age = as.numeric(factor(1:98)), Sex = "M", NETDF = factor(0), Netspp =0.5425858))
+predicted.Lo.F.ND0<- with(mlm.Lo,
+                          data.frame(Age = as.numeric(factor(1:98)), Sex = "F", NETDF = factor(0), Netspp =0.5425858))
+predicted.Lo.ND0 <- rbind(predicted.Lo.F.ND0, predicted.Lo.M.ND0)
+
+predicted.Hi.ND1.M1$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND1.M1, type = "response")
+predicted.Hi.ND1.M0$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND1.M0, type = "response")
+predicted.Hi.ND0.M1$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND0.M1, type = "response")
+predicted.Hi.ND0.M0$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND0.M0, type = "response")
+predicted.Lo.ND1$AgeP <- predict(logit.sig.Lo.pp, newdata = predicted.Lo.ND1, type = "response")
+predicted.Lo.ND0$AgeP <- predict(logit.sig.Lo.pp, newdata = predicted.Lo.ND0, type = "response")
+
