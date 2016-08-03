@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1470262274748.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1FE7D3C1",
+    "lastKnownWriteTime" : 7226435094589303907,
+    "last_content_update" : 1470262274748,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "gniq0uuvkl",
+        "caption" : "mlm.Hi",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=mlm.Hi&cache_key=gniq0uuvkl",
+        "displayedObservations" : 1784,
+        "environment" : "",
+        "object" : "mlm.Hi",
+        "totalObservations" : 1784,
+        "variables" : 28
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

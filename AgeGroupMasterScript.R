@@ -91,4 +91,28 @@ predicted.Hi.ND0.M1$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND0.M1,
 predicted.Hi.ND0.M0$AgeP <- predict(logit.sig.Hi, newdata = predicted.Hi.ND0.M0, type = "response")
 predicted.Lo.ND1$AgeP <- predict(logit.sig.Lo.pp, newdata = predicted.Lo.ND1, type = "response")
 predicted.Lo.ND0$AgeP <- predict(logit.sig.Lo.pp, newdata = predicted.Lo.ND0, type = "response")
+#plotting
+ggplot(predicted.Hi.ND1.M1, aes(x = Age, y = AgeP)),  geom_line(aes(colour = Sex), size=1)
+#agevsLNNET
+AgeppLNNET.Hi<- read.csv("C:/Users/Genevieve/Documents/R/AgeppLNNET.csv")
+AgeppLNNET.Lo<- read.csv("C:/Users/Genevieve/Documents/R/AgeppLNNET.csv")
+
+dummyppLNNET.Hi<- aggregate(mlm.Hi$LNNET, mlm.Hi[c("Age", "Age")], FUN=mean, na.rm=T)
+dummyppLNNET.Lo<- aggregate(mlm.Lo$LNNET, mlm.Lo[c("Age", "Age")], FUN=mean, na.rm=T)
+names(dummyppLNNET.Hi)[names(dummyppLNNET.Hi)=="x"] <- "ppLNNET"
+names(dummyppLNNET.Lo)[names(dummyppLNNET.Lo)=="x"] <- "ppLNNET"
+
+NetusebyAge.Hi<- ggplot(dummyppLNNET.Hi, aes(Age,ppLNNET)) + geom_point() + geom_smooth()
+NetusebyAge.Lo<- ggplot(dummyppLNNET.Lo, aes(Age,ppLNNET)) + geom_point() + geom_smooth()
+dev.copy(png,"NetusebyAgeLo.png",width=8,height=6,units="in",res=100)
+dev.copy(png,"NetusebyAgeHi.png",width=8,height=6,units="in",res=100)
+
+mlm.Hi$RDT<- as.numeric(as.character(mlm.Hi$RDT))
+mlm.Lo$RDT<- as.numeric(as.character(mlm.Lo$RDT))
+AgexRDT.Hi<- aggregate(mlm.Hi$RDT, mlm.Hi[c("Age")], FUN=mean, na.rm=T)
+AgexRDT.Lo<- aggregate(mlm.Lo$RDT, mlm.Lo[c("Age")], FUN=mean, na.rm=T)
+RDTbyAge.Hi<- ggplot(AgexRDT.Hi, aes(Age,x)) + geom_point() + geom_smooth()
+dev.copy(png,"RDTbyAgeHi.png",width=8,height=6,units="in",res=100)
+RDTbyAge.Lo<- ggplot(AgexRDT.Lo, aes(Age,x)) + geom_point() + geom_smooth()
+
 

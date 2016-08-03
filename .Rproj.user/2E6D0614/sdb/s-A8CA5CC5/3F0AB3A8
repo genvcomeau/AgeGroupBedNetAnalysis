@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1470262592743.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3F0AB3A8",
+    "lastKnownWriteTime" : 7296431868103107187,
+    "last_content_update" : 1470262592743,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "22xanq2fyw",
+        "caption" : "AgexRDT.Hi",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=AgexRDT.Hi&cache_key=22xanq2fyw",
+        "displayedObservations" : 89,
+        "environment" : "",
+        "object" : "AgexRDT.Hi",
+        "totalObservations" : 89,
+        "variables" : 2
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
