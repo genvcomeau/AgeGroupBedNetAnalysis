@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1477955177270.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C6B1A285",
+    "lastKnownWriteTime" : 27303364806049904,
+    "last_content_update" : 1477955177270,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "l2xd5f45kp",
+        "caption" : "mlm.Lo.f",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=mlm.Lo.f&cache_key=l2xd5f45kp",
+        "displayedObservations" : "1474",
+        "environment" : "",
+        "object" : "mlm.Lo.f",
+        "totalObservations" : "1474",
+        "variables" : "40"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

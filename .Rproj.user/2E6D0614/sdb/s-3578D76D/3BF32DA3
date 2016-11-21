@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#<- read.table(\"C:/Users/Genevieve/Documents/R/.csv\"\n# , header =TRUE, sep= \",\")\n#head() dim() names() unique() str()\n#summary()\n#table(data$column, data$column) or\n#xtabs(~ column + column, data == data)\n#range(), sd(), mean(), median()\n#margin.table()\n#library(dplyr)\n#filter(data, column == factor)\n#library(MASS)\n#chisq.test(table)\n#fisher.test(table)\n#<-lm(outcome.var~predictedby.var, data = data)\n#coefficients(lm.object)\n#prop.test(sample, total n, null prob) gives confid int for \n#normal approx to binomial\n#oddsratio(2x2 table) gives OR, Fisher, 2x2 table, and chi2\n#To find 95% ci given known mean, sd, var, n\n#se = (qnorm(0.975)*sd)/sqrt(n)\n#mean - se\n#mean + se\n# how to find distribution values for student and chi squared\nqt(c(lowertail, uppertail), df = )\nqchisq(c(lt, ut), df=)         \n",
+    "created" : 1474998834316.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "640351086",
+    "id" : "3BF32DA3",
+    "lastKnownWriteTime" : 1475537929,
+    "last_content_update" : 1475537929343,
+    "path" : "~/Bed Net Analysis/DataAnalysisScriptTemplate.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
